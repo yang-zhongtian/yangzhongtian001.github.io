@@ -1,0 +1,186 @@
+<!--
+ * @Author: HCC
+ * @Date: 2020-06-04 22:17:44
+ * @LastEditTime: 2020-06-06 16:34:01
+ * @Description: HCC Shiyiquan guide page
+ * @FilePath: \QuanGuidePage\index.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>十一圈 加载中</title>
+    <link rel="shortcut icon" href="./image/favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url(./image/background.jpg) no-repeat;
+            background-position: center 0;
+            background-size: cover;
+        }
+
+        .container {
+            text-align: center;
+            height: 65vh;
+            width: 60vw;
+        }
+
+        .banner {
+            height: 35%;
+            width: auto;
+        }
+
+        .banner>img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .seperator {
+            height: 45%;
+        }
+
+        .loader {
+            position: relative;
+            width: 50px;
+            margin: auto;
+        }
+
+        .loader .circle {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            opacity: 0;
+            transform: rotate(225deg);
+            animation-iteration-count: infinite;
+            animation-name: orbit;
+            animation-duration: 5.5s;
+        }
+
+        .loader .circle:after {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        .loader .circle:nth-child(2) {
+            animation-delay: 240ms;
+        }
+
+        .loader .circle:nth-child(3) {
+            animation-delay: 480ms;
+        }
+
+        .loader .circle:nth-child(4) {
+            animation-delay: 720ms;
+        }
+
+        .loader .circle:nth-child(5) {
+            animation-delay: 960ms;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(225deg);
+                opacity: 1;
+                animation-timing-function: ease-out;
+            }
+
+            7% {
+                transform: rotate(345deg);
+                animation-timing-function: linear;
+            }
+
+            30% {
+                transform: rotate(455deg);
+                animation-timing-function: ease-in-out;
+            }
+
+            39% {
+                transform: rotate(690deg);
+                animation-timing-function: linear;
+            }
+
+            70% {
+                transform: rotate(815deg);
+                opacity: 1;
+                animation-timing-function: ease-out;
+            }
+
+            75% {
+                transform: rotate(945deg);
+                animation-timing-function: ease-out;
+            }
+
+            76% {
+                transform: rotate(945deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: rotate(945deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="./image/banner.png" />
+        </div>
+        <div class="seperator"></div>
+        <div class="loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+</body>
+<script src="zepto.min.js"></script>
+<script src="sweetalert.min.js"></script>
+<script>
+    $(function () {
+        var localserver = "http://local.shiyiquan.net/api/local-check/";
+        $.ajax({
+            type: "GET",
+            url: localserver,
+            timeout: 5000,
+            cache: false,
+            success: function (data) {
+                window.location.href = localserver;
+            },
+            error: function (xhr, type) {
+                $(".loader").hide();
+                swal({
+                    title: "提示",
+                    text: "因为一些原因目前校外地区无法访问十一圈，请使用校内计算机设备或连接WIFI以访问。",
+                    icon: "error",
+                    buttons: false,
+                    closeOnClickOutside: false,
+                    closeOnEsc: false,
+                });
+            }
+        });
+    })
+</script>
+
+</html>
