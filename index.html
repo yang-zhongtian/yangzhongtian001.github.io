@@ -160,10 +160,10 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
 <script>
     $(function () {
-        var localserver = "http://local.shiyiquan.net/api/local-check/";
+        var localserver = "https://local.shiyiquan.net";
         $.ajax({
             type: "GET",
-            url: localserver,
+            url: localserver + "/api/local-check/",
             timeout: 5000,
             cache: false,
             success: function (data) {
