@@ -3,7 +3,6 @@
  * @Date: 2020-06-04 22:17:44
  * @LastEditTime: 2020-06-06 16:34:01
  * @Description: HCC Shiyiquan guide page
- * @FilePath: \QuanGuidePage\index.html
 -->
 <!DOCTYPE html>
 <html>
@@ -28,7 +27,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url(https://ae01.alicdn.com/kf/Hc13fe771b3c8423baa951be710455f53H.jpg) no-repeat;
+            background: url(http://ae01.alicdn.com/kf/Hc13fe771b3c8423baa951be710455f53H.jpg) no-repeat;
             background-position: center 0;
             background-size: cover;
         }
@@ -144,7 +143,7 @@
 <body>
     <div class="container">
         <div class="banner">
-            <img src="https://ae01.alicdn.com/kf/H00bc74a1517d4efb96fd8ef2f9f88c70S.png" />
+            <img src="http://ae01.alicdn.com/kf/H00bc74a1517d4efb96fd8ef2f9f88c70S.png" />
         </div>
         <div class="seperator"></div>
         <div class="loader">
@@ -156,11 +155,11 @@
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/zepto"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+<script src="http://cdn.jsdelivr.net/npm/zepto"></script>
+<script src="http://cdn.jsdelivr.net/npm/sweetalert"></script>
 <script>
     $(function () {
-        var localserver = "https://local.shiyiquan.net";
+        var localserver = "http://local.shiyiquan.net";
         $.ajax({
             type: "GET",
             url: localserver + "/api/local-check/",
